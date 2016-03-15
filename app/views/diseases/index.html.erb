@@ -1,0 +1,1 @@
+<%= Disease.joins("join diseases_symptoms on diseases_symptoms.diseases_id = diseases.id").where(["diseases_symptoms.symptom_id=?", symptom_id]) %>

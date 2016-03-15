@@ -1,0 +1,11 @@
+<div class="row">
+  <%= form_for @treatment, html: { class: 'form-horizontal' } do |f| %>
+    <div class="control-group">
+      <%= f.label :disease_id, class: 'control-label' %>
+      <div class="controls">
+        <%= collection_select( :treatment, :disease_id, Disease.all, :id, :name, {}, { :multiple => false } ) %>
+      </div>
+    </div>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

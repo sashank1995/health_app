@@ -1,0 +1,14 @@
+<div class="field">
+  <%= form_for @disease, html: { class: 'form-horizontal' } do |f| %>
+
+    <%= f.label :Symptoms %><br />
+    <%= f.collection_check_boxes :symptom_ids, Symptom.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
+

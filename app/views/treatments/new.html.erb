@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+
+  <h3>Select the disease you are suffering from</h3>
+
+  <%= render 'form' %>
+
+  <%= link_to 'I do not know the name of my disease', new_disease_path %>
+
+<% else %>
+  <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
