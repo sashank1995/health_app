@@ -14,12 +14,13 @@ diseases = ['Blood Cancer',
 symptoms = ['swollen lymphatic node', 'fatigue', 'painful back', 'constipation', 'headache', 'sore throat',
 'lesions on the tongue', 'chronic fatigue', 'dehydration', 'rectal pain', 'blood in stools', 'black, tarry stools']
 
-diseases_symptoms = ['insert into DiseaseSymptom values(1,1);', 'insert into DiseaseSymptom values(2,1);',
-                     'insert into DiseaseSymptom values(3,1);','insert into DiseaseSymptom values(4,2);',
-                     'insert into DiseaseSymptom values(5,2);','insert into DiseaseSymptom values(6,2);',
-                     'insert into DiseaseSymptom values(7,2);','insert into DiseaseSymptom values(8,2);',
-                     'insert into DiseaseSymptom values(9,3);','insert into DiseaseSymptom values(10,3);',
-                     'insert into DiseaseSymptom values(11,3);','insert into DiseaseSymptom values(12,3);']
+diseases_symptoms = ['insert into diseases_symptoms values(1,1);', 'insert into diseases_symptoms values(2,1);',
+                     'insert into diseases_symptoms values(3,1);','insert into diseases_symptoms values(4,2);',
+                     'insert into diseases_symptoms values(5,2);','insert into diseases_symptoms values(6,2);',
+                     'insert into diseases_symptoms values(7,2);','insert into diseases_symptoms values(8,2);',
+                     'insert into diseases_symptoms values(9,3);','insert into diseases_symptoms values(10,3);',
+                     'insert into diseases_symptoms values(11,3);','insert into diseases_symptoms values(12,3);',
+                     'insert into diseases_symptoms values(17,8);','insert into diseases_symptoms values(18,8);']
 
 diseases.each do |disease|
   Disease.where(name: disease).first_or_create(name: disease)
@@ -30,8 +31,9 @@ symptoms.each do |symptom|
 end
 
 diseases_symptoms.each do |disease_symptom|
-  DiseaseSymptom.where(ActiveRecord::Base.connection.execute(disease_symptom)).first_or_create(ActiveRecord::Base.connection.execute(disease_symptom))
+  ActiveRecord::Base.connection.execute(disease_symptom)
 end
+
 
 
 Treatment.create!(medicine: "nothing", food: "nothing", activities: "nothing", disease_id: 1)

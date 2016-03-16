@@ -1,7 +1,7 @@
 class TreatmentsController < ApplicationController
 
   def index
-    @treatment = Treatment.find(params[:treatment][:disease_id]).reject(&:blank?) unless params[:treatment].nil?
+    @treatment = Treatment.find(params[:treatment][:disease_id])
   end
 
   def new
@@ -10,8 +10,17 @@ class TreatmentsController < ApplicationController
 
 
   def create
+    if current_user && current_user.admin?
+      @treatment = Treatment.new(treatment_params)
+      if @treatment.save
+        redirect_to static_pages_home_path
+      else
+        render 'new'
+      end
+    else
     @treatment = Treatment.new(treatment_params)
     redirect_to @treatment
+    end
   end
 
   #def show

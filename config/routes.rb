@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   #get 'treatments/new'
   #post 'treatments/show'
   #get 'diseases/new'
-  
+  #get 'symptoms/new'
+
   root 'treatments#new'
+  get 'static_pages/home'
   resources :diseases
   resources :treatments
-
-  get 'symptoms/new'
+  resources :symptoms
 
   devise_for :users, controllers: {:registrations => 'users/registrations',
                                    sessions: 'users/sessions'

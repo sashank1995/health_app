@@ -9,7 +9,16 @@ class SymptomsController < ApplicationController
   end
 
   def create
-    @symptom = Symptom.new(symptom_params)
+    if current_user && current_user.admin?
+      @symptom = Symptom.new(symptom_params)
+      if @symptom.save
+        render 'new'
+      else
+        render 'new'
+      end
+    else
+      @symptom = Symptom.new(symptom_params)
+    end
   end
 
   private
