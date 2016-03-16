@@ -19,8 +19,12 @@ diseases_symptoms = ['insert into diseases_symptoms values(1,1);', 'insert into 
                      'insert into diseases_symptoms values(5,2);','insert into diseases_symptoms values(6,2);',
                      'insert into diseases_symptoms values(7,2);','insert into diseases_symptoms values(8,2);',
                      'insert into diseases_symptoms values(9,3);','insert into diseases_symptoms values(10,3);',
+<<<<<<< HEAD
                      'insert into diseases_symptoms values(11,3);','insert into diseases_symptoms values(12,3);',
                      'insert into diseases_symptoms values(17,8);','insert into diseases_symptoms values(18,8);']
+=======
+                     'insert into diseases_symptoms values(11,3);','insert into diseases_symptoms values(12,3);']
+>>>>>>> 1a92750dd1010ccc83a7613779a08d80c682606f
 
 diseases.each do |disease|
   Disease.where(name: disease).first_or_create(name: disease)
