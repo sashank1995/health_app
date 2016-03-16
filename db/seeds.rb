@@ -9,10 +9,11 @@
 
 
 diseases = ['Blood Cancer',
-'Typhoid', 'HIV/AIDS']
+'Typhoid', 'HIV/AIDS', 'leukemia', 'cholera']
 
 symptoms = ['swollen lymphatic node', 'fatigue', 'painful back', 'constipation', 'headache', 'sore throat',
-'lesions on the tongue', 'chronic fatigue', 'dehydration', 'rectal pain', 'blood in stools', 'black, tarry stools']
+'lesions on the tongue', 'chronic fatigue', 'dehydration', 'rectal pain', 'blood in stools', 'black, tarry stools', 'pain iin bones or joints', 'frequent infections',
+'loss of skin elasticity', 'rapid heart rate']
 
 diseases_symptoms = ['insert into diseases_symptoms values(1,1);', 'insert into diseases_symptoms values(2,1);',
                      'insert into diseases_symptoms values(3,1);','insert into diseases_symptoms values(4,2);',
