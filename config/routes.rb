@@ -1,15 +1,32 @@
 Rails.application.routes.draw do
-  #post 'diseases/index'
+  root 'diseases#index'
+  post 'diseases/perform_search'
+  post 'symptoms/show_diseases'
+  #get 'diseases/index'
+  #get 'diseases/show'
+  #post 'diseases/create'
+  #get 'diseases/edit'
+  #delete 'diseases/destroy'
+
+  #get 'symptoms/new'
+  #get 'symptoms/index'
+  get 'symptoms/show'
+  #post 'symptoms/create'
+  #get 'symptoms/edit'
+  #delete 'symptoms/destroy'
+
+  get 'static_pages/home'
+
   #get 'treatments/new'
-  #post 'treatments/show'
-  #get 'diseases/new'
+  #get 'treatments/show'
   #get 'symptoms/new'
 
-  root 'treatments#new'
-  get 'static_pages/home'
-  resources :diseases
-  resources :treatments
+  resources :diseases do
+    resource :treatments, except: [:index, :edit, :destroy]
+  end
+
   resources :symptoms
+  resources :treatments, only: [:index, :edit, :destroy]
 
   devise_for :users, controllers: {:registrations => 'users/registrations',
                                    sessions: 'users/sessions'

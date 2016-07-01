@@ -1,0 +1,6 @@
+<% if current_user && current_user.admin? %>
+  <p> The medicine added for <b><%= @disease.name %></b> is <%= @treatment.medicine %></p>
+  <p> The food-intake added is <%= @treatment.food %></p>
+  <p> The activity added is <%= @treatment.activities %></p>
+  <%= link_to 'Add a symptom', new_symptom_path  %>
+<% end %>

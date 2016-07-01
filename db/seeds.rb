@@ -22,7 +22,7 @@ diseases_symptoms = ['insert into diseases_symptoms values(1,1);', 'insert into 
                      'insert into diseases_symptoms values(9,3);','insert into diseases_symptoms values(10,3);',
                      'insert into diseases_symptoms values(11,3);','insert into diseases_symptoms values(12,3);',
                      'insert into diseases_symptoms values(17,8);','insert into diseases_symptoms values(18,8);',
-                     'insert into diseases_symptoms values(19,9);','insert into diseases_symptoms values(20,9);']
+                     'insert into diseases_symptoms values(19,9);']
 
 diseases.each do |disease|
   Disease.where(name: disease).first_or_create(name: disease)

@@ -1,1 +1,29 @@
-<%= Disease.joins("join diseases_symptoms on diseases_symptoms.diseases_id = diseases.id").where(["diseases_symptoms.symptom_id=?", symptom_id]) %>
+<% if current_user && current_user.admin? %>
+  <ul class="diseases">
+    <% @diseases.each do |disease| %>
+      <li>
+        <%= link_to disease.name, disease_path(disease) %>
+        | <%= link_to 'Edit', edit_disease_path(disease) %>
+      | <%= link_to "delete", disease, method: :delete,
+        data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+  </ul>
+
+  <%= link_to 'Show all symptoms', symptoms_path %>
+  <%= link_to 'Show all treatments', treatments_path %>
+  <%=link_to 'Add a disease',new_disease_path %> 
+
+<% else %>
+  <% if user_signed_in? %>
+
+    <h3>Select the disease you are suffering from</h3>
+    <%= render 'form' %>
+
+  <% else %>
+    <%= link_to 'Sign up', new_user_registration_path %>
+  <% end %>
+
+<% end %>
+
+

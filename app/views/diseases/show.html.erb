@@ -1,1 +1,10 @@
-<% @disease.name %>
+<% if current_user && current_user.admin? %>
+  <p> The new disease is <%= @disease.name %></p>
+  <%= link_to 'Create a treatment', new_disease_treatments_path(:disease_id => @disease.id) %><br />
+  <%= link_to 'Create symptoms', new_symptom_path %><br />
+<% else %>
+  <p> You are suffering from <%= @disease.name %>.<br /> 
+  The prescribed medicine for this is <%= @disease.treatment.medicine %><br />
+  The prescribed food intake for this is <%= @disease.treatment.food %><br />
+  Your food-intake should include <%= @disease.treatment.activities %><br /></p>
+<% end %> 

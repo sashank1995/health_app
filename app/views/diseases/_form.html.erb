@@ -1,14 +1,29 @@
-<div class="field">
-  <%= form_for @disease, html: { class: 'form-horizontal' } do |f| %>
-
-    <%= f.label :Symptoms %><br />
-    <%= f.collection_check_boxes :symptom_ids, Symptom.all, :id, :name do |b| %>
-      <div class="collection-check-box">
-        <%= b.check_box %>
-        <%= b.label %>
+<div class = "row">
+  <%= form_tag diseases_perform_search_path do %>
+    <div class = "control-group">
+      <%= label_tag :disease_id, "Select your disease" %>
+      <div class="controls">
+       <%= collection_select(:treatment, :disease_id, Disease.all, :id, :name) %> 
       </div>
-    <% end %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<div class = "symptom_form">
+  <div class="col-md-6">
+    <%= form_tag symptoms_show_diseases_path, html: { class: 'form-horizontal' } do %>
+      <%= label_tag :symptoms, "Select symptoms if you dont know the name of your disease" %><br />
+      <%= collection_check_boxes :symptom, :symptom_ids, Symptom.all, :id, :name do |b| %>
+        <div class="collection-check-box">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>
+
 

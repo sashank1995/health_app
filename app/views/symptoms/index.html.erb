@@ -1,0 +1,12 @@
+<% if current_user && current_user.admin? %>
+  <ul class = "symptoms">
+    <% @symptoms.each do |symptom| %>
+      <li>
+        <%= symptom.name %>
+        | <%= link_to 'Edit', edit_symptom_path(symptom) %>
+      | <%= link_to "delete", symptom , method: :delete,
+        data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

@@ -1,2 +1,14 @@
-<%= @treatment.medicine %>
+<ul class = "treatments">
+  <% @treatments.each do |treatment| %>
+    <li>
+    Medicine: <%= treatment.medicine %>,
+    Food-intake: <%= treatment.food %>,
+    Activities: <%= treatment.activities %>
+      | <%= link_to 'edit', edit_treatment_path(treatment) %>
+      | <%= link_to "delete", treatment , method: :delete,
+      data: { confirm: "You sure?" } %>
+  </li>
+<% end %>
+</ul>
+
 
